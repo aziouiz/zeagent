@@ -1,0 +1,20 @@
+{
+  "name": "zeagent",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index-memory-working.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@langchain/core": "^0.3.57",
+    "@langchain/langgraph": "0.2.74",
+    "@langchain/mcp-adapters": "0.5.2",
+    "@langchain/openai": "0.5.11",
+    "dotenv": "^16.5.0",
+    "uuid": "^11.1.0"
+  }
+}

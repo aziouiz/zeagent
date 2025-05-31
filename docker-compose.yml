@@ -1,0 +1,29 @@
+services:
+  oracle-xe:
+    image: gvenzl/oracle-xe:21.3.0
+    container_name: oracle-xe
+    ports:
+      - "1521:1521"
+    environment:
+      ORACLE_PASSWORD: password
+      APP_USER: test
+      APP_USER_PASSWORD: password
+    volumes:
+      - oracle-data:/opt/oracle/oradata
+    restart: unless-stopped
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql
+    ports:
+      - "1433:1433"
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "YourStrong@Passw0rd"
+    volumes:
+      - mssql-data:/var/opt/mssql
+    restart: unless-stopped
+
+volumes:
+  oracle-data:
+  mssql-data:
