@@ -10,9 +10,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@langchain/anthropic": "^0.3.21",
     "@langchain/core": "^0.3.57",
     "@langchain/langgraph": "0.2.74",
     "@langchain/mcp-adapters": "0.5.2",
+    "@langchain/ollama": "^0.2.0",
     "@langchain/openai": "0.5.11",
     "dotenv": "^16.5.0",
     "uuid": "^11.1.0"

@@ -1,17 +1,12 @@
 import { MultiServerMCPClient } from "@langchain/mcp-adapters";
-import { ChatOpenAI } from "@langchain/openai";
 import { createReactAgent } from "@langchain/langgraph/prebuilt";
 import { MemorySaver } from "@langchain/langgraph";
 import { v4 as uuidv4 } from "uuid";
 import readline from "readline";
 import dotenv from "dotenv";
 import {trimMessages} from "@langchain/core/messages";
+import { getLLMModel } from "./llm.js";
 dotenv.config();
-
-if (!process.env.OPENAI_API_KEY) {
-    console.error("Please set the OPENAI_API_KEY environment variable.");
-    process.exit(1);
-}
 
 const client = new MultiServerMCPClient({
     throwOnLoadError: true,
@@ -45,13 +40,8 @@ const client = new MultiServerMCPClient({
 
 const tools = await client.getTools();
 
-const model = new ChatOpenAI({
-    modelName: "gpt-4o",
-    temperature: 0,
-    configuration: {
-        apiKey: process.env.OPENAI_API_KEY,
-    },
-});
+const model = getLLMModel();
+
 
 const invokeConfig = { configurable: { thread_id: uuidv4() } };
 
